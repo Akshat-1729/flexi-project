@@ -1,13 +1,14 @@
-import "./list.css";
+import "../flight/flight.css";
 import Navbar from "../../components/navbar/Navbar";
 import Header from "../../components/header/Header";
 import { useLocation } from "react-router-dom";
 import { useState } from "react";
 import { format } from "date-fns";
 import { DateRange } from "react-date-range";
-import SearchItem from "../../components/searchItem/SearchItem";
 
-const List = () => {
+import FlightItem from "../../components/flightItem/FlightItem";
+
+const Taxis = () => {
 const location = useLocation();
 const initialDestination = location.state ? location.state.destination : '';
 const initialDate = location.state ? location.state.date : [{ startDate: new Date(), endDate: new Date() }];
@@ -49,13 +50,13 @@ const [options, setOptions] = useState(initialOptions);
               <div className="lsOptions">
                 <div className="lsOptionItem">
                   <span className="lsOptionText">
-                    Min price <small>per night</small>
+                    Min price
                   </span>
                   <input type="number" className="lsOptionInput" />
                 </div>
                 <div className="lsOptionItem">
                   <span className="lsOptionText">
-                    Max price <small>per night</small>
+                    Max price
                   </span>
                   <input type="number" className="lsOptionInput" />
                 </div>
@@ -77,29 +78,14 @@ const [options, setOptions] = useState(initialOptions);
                     placeholder={options.children}
                   />
                 </div>
-                <div className="lsOptionItem">
-                  <span className="lsOptionText">Room</span>
-                  <input
-                    type="number"
-                    min={1}
-                    className="lsOptionInput"
-                    placeholder={options.room}
-                  />
-                </div>
+                
               </div>
             </div>
             <button>Search</button>
           </div>
           <div className="listResult">
-          <SearchItem />
-            <SearchItem />
-            <SearchItem />
-            <SearchItem />
-            <SearchItem />
-            <SearchItem />
-            <SearchItem />
-            <SearchItem />
-            <SearchItem />
+          <FlightItem/>
+            
           </div>
         </div>
       </div>
@@ -107,4 +93,4 @@ const [options, setOptions] = useState(initialOptions);
   );
 };
 
-export default List;
+export default Taxis;
